@@ -9,6 +9,8 @@ function! fmtsql#format_full() range
   let selected = @@
   let @@ = tmp
   echo selected
+  " current行を書き換えてみるサンプル
+  call setline(line("."), selected)
 endfunction
 
 let &cpo = s:save_cpo
