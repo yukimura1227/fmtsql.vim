@@ -4,13 +4,11 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! fmtsql#format_full() range
-  let tmp = @@
-  silent normal gvy
-  let selected = @@
-  let @@ = tmp
-  echo selected
-  " current行を書き換えてみるサンプル
-  call setline(line("."), selected)
+  silent normal x
+  let cut_text = @@
+  let @" = '--'.cut_text.'--'
+  echo @"
+  silent normal ""p
 endfunction
 
 let &cpo = s:save_cpo
